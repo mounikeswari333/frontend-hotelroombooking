@@ -41,6 +41,7 @@ function Home() {
   });
   const guestDropdownRef = useRef(null);
   const dateDropdownRef = useRef(null);
+  const resultsSectionRef = useRef(null);
 
   const markSomeRoomsUnavailable = (roomList) => {
     return roomList.map((room, index) => ({
@@ -242,11 +243,49 @@ function Home() {
       setRooms([]);
     } finally {
       setLoading(false);
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          resultsSectionRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        });
+      });
     }
   };
 
-  const handleTrendingClick = (cityName) => {
-    setSearchForm({ ...searchForm, city: cityName });
+  const handleTrendingClick = async (cityName) => {
+    setSearchForm({
+      city: cityName,
+      checkIn: "",
+      checkOut: "",
+    });
+    setDateRange([null, null]);
+    setGuestOpen(false);
+    setDateOpen(false);
+    setLoading(true);
+    setSearchPerformed(true);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        resultsSectionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    });
+
+    try {
+      const { data } = await api.get("/rooms", {
+        params: { city: cityName },
+      });
+
+      setRooms(markSomeRoomsUnavailable(data));
+    } catch {
+      setRooms([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCollectionClick = (collection) => {
@@ -408,7 +447,7 @@ function Home() {
 
       {/* Room List + Left Filters - Above Trending */}
       {searchPerformed && (
-        <section className="results-wrap">
+        <section className="results-wrap" ref={resultsSectionRef}>
           <aside className="filters-column">
             <Filters filters={filters} setFilters={setFilters} />
           </aside>
@@ -416,7 +455,11 @@ function Home() {
           <div className="rooms-column">
             <section className="rooms-section">
               <h2>
-                {visibleRooms.length > 0 ? "Available Rooms" : "No Rooms Found"}
+                {searchForm.city
+                  ? `Hotels in ${searchForm.city}`
+                  : visibleRooms.length > 0
+                    ? "Available Rooms"
+                    : "No Rooms Found"}
               </h2>
 
               {visibleRooms.length === 0 && !loading && (
