@@ -1,0 +1,97 @@
+.filters-section {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 0;
+  animation: slideDown 0.3s ease;
+}
+
+.filters-section h3 {
+  margin: 0 0 14px;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.filter-label {
+  margin: 0 0 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.amenities-filter {
+  margin-bottom: 18px;
+}
+
+.amenity-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.amenity-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  background: #f8f8f8;
+  cursor: pointer;
+  font-weight: 600;
+  transition: border-color 0.2s ease;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.amenity-filter-btn.active {
+  background: #e6f7ed;
+  color: #0f8a4b;
+  border-color: var(--primary);
+}
+
+.price-filter {
+  margin-top: 16px;
+}
+
+.ratings-filter {
+  margin-top: 16px;
+}
+
+.rating-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.rating-option input {
+  width: 16px;
+  height: 16px;
+}
+
+.stars {
+  color: #f6b221;
+  letter-spacing: 1px;
+}
+
+.price-slider {
+  width: 100%;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

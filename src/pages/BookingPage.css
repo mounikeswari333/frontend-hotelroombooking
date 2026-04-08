@@ -1,0 +1,50 @@
+.booking-page {
+  min-height: 100vh;
+  background: var(--bg-main);
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.page-container h1 {
+  margin: 0 0 30px;
+  font-size: 2rem;
+  color: var(--text-main);
+}
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 30px;
+}
+
+.available-rooms-section {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.available-rooms-section h2 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+.section-note {
+  margin: 0 0 20px;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.rooms-list {
+  display: grid;
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+}
