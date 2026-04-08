@@ -1,7 +1,7 @@
 .member-selector-container {
   display: grid;
-  gap: 16px;
-  padding: 20px 18px;
+  gap: 14px;
+  padding: 16px;
   background: white;
   border-radius: 12px;
   border: 1px solid var(--line);
@@ -9,74 +9,157 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.member-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 16px;
+.member-selector-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--line);
 }
 
-.member-group:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
+.room-count-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
 }
 
-.member-name {
-  margin: 0;
+.room-count-label {
   font-weight: 700;
-  font-size: 1.05rem;
   color: var(--text-main);
 }
 
-.member-subtitle {
-  margin: 3px 0 0;
+.room-count-select,
+.room-pickers select,
+.child-age-row select {
+  border: 1px solid #dad6cd;
+  border-radius: 8px;
+  padding: 10px 12px;
   font-size: 0.95rem;
-  color: var(--text-soft);
+  background: #fff;
+  color: var(--text-main);
 }
 
-.counter {
+.room-count-select {
+  min-width: 130px;
+}
+
+.room-list {
+  display: grid;
+  gap: 12px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.room-passenger-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.room-passenger-card.warning {
+  background: #fffaf0;
+  border-color: #f1b35b;
+}
+
+.room-passenger-card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: transparent;
-  border-radius: 8px;
-  padding: 0;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ebe7dd;
 }
 
-.counter button {
-  background: #efefef;
-  border: 1px solid #ececec;
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
+.room-passenger-card-header h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #0d69ff;
+}
+
+.remove-room-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: #ffefef;
+  color: #d84a3e;
   cursor: pointer;
-  color: #333;
-  padding: 0;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s ease;
 }
 
-.counter button:hover {
-  color: #111;
+.room-pickers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.counter span {
+.room-pickers label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.room-pickers select {
+  width: 100%;
+}
+
+.child-ages-list {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+  background: #eef5ff;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.child-age-row {
+  display: grid;
+  grid-template-columns: auto minmax(110px, 120px) auto;
+  gap: 10px;
+  align-items: center;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.child-age-unit {
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+.passenger-warning {
+  margin-top: 12px;
+  color: #d84a3e;
+  font-size: 0.92rem;
   font-weight: 700;
-  font-size: 1.1rem;
-  min-width: 24px;
-  text-align: center;
-  color: #202020;
+  line-height: 1.45;
 }
 
 @media (max-width: 768px) {
-  .member-name {
-    font-size: 1.15rem;
+  .member-selector-container {
+    padding: 14px;
   }
 
-  .member-subtitle {
-    font-size: 0.95rem;
+  .room-count-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .room-pickers {
+    grid-template-columns: 1fr;
+  }
+
+  .child-age-row {
+    grid-template-columns: 1fr;
   }
 }

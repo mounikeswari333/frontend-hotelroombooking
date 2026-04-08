@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "./Navbar.css";
+import { MdLocalHotel } from "react-icons/md";
 
 function SimpleNavbar() {
   const { isAuthenticated, logout } = useAuth();
@@ -15,6 +16,7 @@ function SimpleNavbar() {
     <header className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
+          <MdLocalHotel className="icon-hotel-room"/>
           StayFinder
         </Link>
 

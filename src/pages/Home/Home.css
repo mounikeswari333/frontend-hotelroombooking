@@ -5,9 +5,14 @@
 
 /* Search Section */
 .search-section {
-  background: linear-gradient(135deg, #243f36, #2f5549);
+  background:
+    linear-gradient(rgba(31, 61, 51, 0.68), rgba(31, 61, 51, 0.68)),
+    url("https://media.cntraveler.com/photos/692b8204c5b883afeb0b697f/16:9/w_2560%2Cc_limit/Nautilus-14.jpg")
+      center/cover no-repeat;
   color: white;
-  padding: 50px 16px;
+  min-height: 420px;
+  padding: 76px 16px 58px;
+  position: relative;
 }
 
 .search-section h1 {
@@ -305,6 +310,11 @@
 }
 
 @media (max-width: 768px) {
+  .search-section {
+    min-height: 360px;
+    padding: 56px 16px 40px;
+  }
+
   .search-card {
     grid-template-columns: 1fr;
     overflow: visible;

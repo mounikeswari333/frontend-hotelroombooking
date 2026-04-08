@@ -25,17 +25,12 @@ function Home() {
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : [];
   });
+  const [roomGroups, setRoomGroups] = useState([{ adults: 2, children: 0 }]);
 
   const [searchForm, setSearchForm] = useState({
     city: "",
     checkIn: "",
     checkOut: "",
-  });
-
-  const [members, setMembers] = useState({
-    adults: 0,
-    children: 0,
-    infants: 0,
   });
 
   const [filters, setFilters] = useState({
@@ -130,12 +125,19 @@ function Home() {
     },
   ];
 
-  const totalGuests = members.adults + members.children + members.infants;
-  const guestLabel = useMemo(() => {
-    if (totalGuests === 0) return "Add guests";
-    if (totalGuests === 1) return "1 guest";
-    return `${totalGuests} guests`;
-  }, [totalGuests]);
+  const passengerSummary = useMemo(() => {
+    const totalRooms = roomGroups.length;
+    const totalPassengers = roomGroups.reduce(
+      (sum, room) => sum + room.adults + room.children,
+      0,
+    );
+
+    if (totalRooms === 0 || totalPassengers === 0) {
+      return "Select rooms & passengers";
+    }
+
+    return `${totalRooms} room${totalRooms > 1 ? "s" : ""}, ${totalPassengers} passenger${totalPassengers > 1 ? "s" : ""}`;
+  }, [roomGroups]);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -375,18 +377,21 @@ function Home() {
           </div>
 
           <div className="search-field guest-field" ref={guestDropdownRef}>
-            <label>Who</label>
+            <label>Rooms & Passengers</label>
             <button
               type="button"
               className="guest-trigger"
               onClick={() => setGuestOpen((prev) => !prev)}
             >
-              {guestLabel}
+              {passengerSummary}
             </button>
 
             {guestOpen && (
               <div className="guest-dropdown">
-                <MemberSelector members={members} setMembers={setMembers} />
+                <MemberSelector
+                  roomGroups={roomGroups}
+                  setRoomGroups={setRoomGroups}
+                />
               </div>
             )}
           </div>
