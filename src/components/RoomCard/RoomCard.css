@@ -58,18 +58,6 @@
   color: var(--danger);
 }
 
-.booked-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background: rgba(212, 74, 62, 0.9);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
 .room-content {
   padding: 14px;
 }
@@ -125,6 +113,20 @@
   margin: 2px 0 0;
   font-size: 0.8rem;
   color: var(--text-soft);
+}
+
+.availability-text {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.availability-text.available {
+  color: var(--success);
+}
+
+.availability-text.not-available {
+  color: var(--danger);
 }
 
 .book-btn {

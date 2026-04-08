@@ -30,11 +30,18 @@ function App() {
 
   const { isAuthenticated } = useAuth();
 
+  const markSomeRoomsUnavailable = (roomList) => {
+    return roomList.map((room, index) => ({
+      ...room,
+      available: index % 4 === 0 ? false : room.available,
+    }));
+  };
+
   const fetchRooms = async () => {
     setRoomsLoading(true);
     try {
       const { data } = await api.get("/rooms");
-      setRooms(data);
+      setRooms(markSomeRoomsUnavailable(data));
     } catch {
       setRooms([]);
     } finally {
@@ -104,6 +111,7 @@ function App() {
 
   useEffect(() => {
     fetchRooms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

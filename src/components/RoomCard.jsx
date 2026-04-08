@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom";
 
+const FALLBACK_ROOM_IMAGE =
+  "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1400&q=80";
+
 function RoomCard({ room }) {
   return (
     <article className="room-card">
-      <img src={room.image_url} alt={room.hotel_name} className="room-image" />
+      <img
+        src={room.image_url || FALLBACK_ROOM_IMAGE}
+        alt={room.hotel_name}
+        className="room-image"
+        onError={(event) => {
+          event.currentTarget.onerror = null;
+          event.currentTarget.src = FALLBACK_ROOM_IMAGE;
+        }}
+      />
       <div className="room-content">
         <h3>{room.hotel_name}</h3>
         <p>

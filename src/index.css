@@ -50,12 +50,12 @@ a {
 }
 
 .nav-top {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
+  padding: 14px 16px;
 }
 
 .brand {
@@ -89,7 +89,7 @@ a {
 }
 
 .search-strip {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto 16px;
   display: grid;
   grid-template-columns: 1.6fr 1.1fr 1fr 1fr 0.8fr;
@@ -181,9 +181,9 @@ a {
 }
 
 .page {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 24px auto;
-  padding: 0 20px 30px;
+  padding: 0 16px 30px;
 }
 
 .hero {
@@ -366,6 +366,18 @@ a {
 .ghost-btn {
   background: #efeee9;
   color: #1f2b27;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid #d8d5cd;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.ghost-btn:hover {
+  background: #e7e4dc;
 }
 
 .empty-state {
@@ -377,10 +389,12 @@ a {
 .auth-page {
   display: grid;
   place-items: center;
+  min-height: calc(100vh - 90px);
 }
 
 .auth-card {
   width: min(430px, 100%);
+  padding: 20px;
 }
 
 .alert {
@@ -455,7 +469,7 @@ a {
   .search-strip {
     grid-template-columns: 1fr;
     border-radius: 12px;
-    margin: 0 12px 14px;
+    margin: 0 10px 14px;
   }
 
   .search-cell,
@@ -480,5 +494,23 @@ a {
     gap: 8px;
     flex-wrap: wrap;
     justify-content: flex-end;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    margin: 14px auto;
+    padding: 0 10px 20px;
+  }
+
+  .auth-page {
+    min-height: calc(100vh - 80px);
+    place-items: start center;
+  }
+
+  .auth-card {
+    margin-top: 8px;
+    border-radius: 12px;
+    padding: 16px;
   }
 }

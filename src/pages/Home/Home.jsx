@@ -47,6 +47,13 @@ function Home() {
   const guestDropdownRef = useRef(null);
   const dateDropdownRef = useRef(null);
 
+  const markSomeRoomsUnavailable = (roomList) => {
+    return roomList.map((room, index) => ({
+      ...room,
+      available: index % 4 === 0 ? false : room.available,
+    }));
+  };
+
   const trendingDestinations = [
     {
       id: 1,
@@ -144,6 +151,24 @@ function Home() {
   }, []);
 
   useEffect(() => {
+    const fetchInitialRooms = async () => {
+      setSearchPerformed(true);
+      setLoading(true);
+
+      try {
+        const { data } = await api.get("/rooms");
+        setRooms(markSomeRoomsUnavailable(data));
+      } catch {
+        setRooms([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInitialRooms();
+  }, []);
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         guestDropdownRef.current &&
@@ -210,7 +235,7 @@ function Home() {
         },
       });
 
-      setRooms(data);
+      setRooms(markSomeRoomsUnavailable(data));
     } catch {
       setRooms([]);
     } finally {

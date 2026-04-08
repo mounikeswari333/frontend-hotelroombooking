@@ -15,7 +15,7 @@ function SimpleNavbar() {
     <header className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          🏨 Hotel Booking
+          StayFinder
         </Link>
 
         <nav className="navbar-nav">
@@ -28,7 +28,7 @@ function SimpleNavbar() {
           <Link to="/bookings" className="nav-link">
             My Bookings
           </Link>
-          <Link to="/favorites" className="nav-link favorites-link">
+          <Link to="/favorites" className="nav-link">
             Favorites
           </Link>
 
